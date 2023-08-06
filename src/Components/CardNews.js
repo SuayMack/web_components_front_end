@@ -19,6 +19,7 @@ class CardNews extends HTMLElement {
 
     const linkTitle = document.createElement("a");
     linkTitle.textContent = this.getAttribute("title");
+    linkTitle.href = this.getAttribute("link-url")
 
     const newsContent = document.createElement("p");
     newsContent.textContent = this.getAttribute("content");
@@ -32,13 +33,16 @@ class CardNews extends HTMLElement {
 
     const newsImage = document.createElement("img");
     cardRight.appendChild(newsImage);
+    newsImage.src = this.getAttribute("photo") || "./assets/foto-default.jpg";
+    newsImage.alt = "imagem do Darth Vader"
 
     componentRoot.appendChild(cardLeft);
-    componentRoot.appendChild(cardRight)
+    componentRoot.appendChild(cardRight);
 
     return componentRoot;
   }
 
   styles() {}
 }
-customElements.define('card-news', CardNews)
+
+customElements.define('card-news', CardNews);
